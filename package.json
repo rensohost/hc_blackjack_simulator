@@ -1,0 +1,22 @@
+{
+  "name": "blackjack-oefentafel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Blackjack-oefentafel volgens de tafelregels van Holland Casino. Speelgeld, geen echt geld.",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "node --test tests/*.test.js"
+  },
+  "engines": {
+    "node": ">=20.9"
+  },
+  "dependencies": {
+    "@upstash/redis": "1.41.0",
+    "next": "16.4.4",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  }
+}
