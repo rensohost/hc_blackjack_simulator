@@ -163,9 +163,13 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .winlab { position: absolute; transform: translate(-50%, 0); font-family: var(--num); font-size: 12px; font-weight: 700; color: #0c2a1d; background: var(--win); padding: 1px 7px; border-radius: 999px; white-space: nowrap; pointer-events: none; }
 .g-narrow .winlab { font-size: 9.5px; padding: 0 5px; }
 
+/* Knop over een box. --pad maakt het tikvlak groter dan de zichtbare ring (telefoon liggend). */
 .boxbtn { position: absolute; z-index: 2; transform: translate(-50%, -50%); border-radius: 50%; border: 0; background: transparent; cursor: pointer; padding: 0; }
-.boxbtn.sel { box-shadow: 0 0 0 3px var(--brass), 0 0 18px rgba(226, 194, 122, .35); }
-.boxbtn:hover:not(.sel) { box-shadow: 0 0 0 2px var(--brass-dim); }
+.boxbtn::before { content: ""; position: absolute; inset: var(--pad, 0px); border-radius: 50%; }
+.boxbtn.sel::before { box-shadow: 0 0 0 3px var(--brass), 0 0 18px rgba(226, 194, 122, .35); }
+.boxbtn:hover:not(.sel)::before { box-shadow: 0 0 0 2px var(--brass-dim); }
+.boxbtn:focus-visible { outline: 0; }
+.boxbtn:focus-visible::before { outline: 2px solid var(--brass); outline-offset: 4px; }
 .boxlab { position: absolute; transform: translate(-50%, 0); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(244, 240, 232, .6); pointer-events: none; white-space: nowrap; }
 .g-narrow .boxlab { font-size: 9px; }
 
@@ -200,6 +204,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 select { background: var(--panel-2); color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 9px 10px; font: inherit; }
 .err { color: var(--lose); font-size: 13px; min-height: 1em; margin: 0; }
 .fine { color: var(--muted); font-size: 12px; margin: 0; }
+.fine a { color: var(--brass); }
 
 /* ---------- bediening ---------- */
 .dock { position: absolute; left: 0; right: 0; bottom: 0; z-index: 5; background: linear-gradient(180deg, rgba(18, 19, 20, 0), rgba(18, 19, 20, .94) 22px); padding-top: 18px; padding-bottom: max(12px, env(safe-area-inset-bottom, 0px)); }
@@ -237,12 +242,13 @@ select { background: var(--panel-2); color: var(--text); border: 1px solid var(-
 .toggle[aria-pressed="true"] .sw::after { transform: translateX(16px); background: var(--ink); }
 .toggle:disabled { opacity: .4; cursor: not-allowed; }
 .roundres { text-align: center; font-size: 14px; color: var(--muted); }
-.roundres b { font-family: var(--num); font-size: 20px; margin-left: 6px; }
+.roundres b { font-family: var(--num); font-size: 20px; margin-left: 6px; white-space: nowrap; }
 .roundres.pos b { color: var(--win); } .roundres.neg b { color: var(--lose); } .roundres.zero b { color: var(--ivory); }
 .coach { text-align: center; font-size: 12.5px; color: var(--brass); min-height: 1.2em; }
-.toast { position: fixed; z-index: 15; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 10px); transform: translateX(-50%); width: max-content; max-width: min(92vw, 460px); background: #241d10; border: 1px solid var(--brass-dim); color: var(--ivory); border-radius: 12px; padding: 9px 14px; font-size: 13.5px; box-shadow: 0 8px 20px rgba(0, 0, 0, .5); text-align: center; animation: toastin .2s ease both; }
+/* Meldingen verschijnen net boven de knoppen, waar je toch kijkt, en niet over het saldo */
+.toast { position: absolute; z-index: 15; left: 50%; bottom: calc(var(--dock-h, 0px) + 12px); transform: translateX(-50%); width: max-content; max-width: min(92vw, 460px); background: #241d10; border: 1px solid var(--brass-dim); color: var(--ivory); border-radius: 12px; padding: 9px 14px; font-size: 13.5px; box-shadow: 0 8px 20px rgba(0, 0, 0, .5); text-align: center; animation: toastin .2s ease both; }
 .toast.warn { border-color: var(--brass); }
-@keyframes toastin { from { opacity: 0; transform: translate(-50%, -6px); } }
+@keyframes toastin { from { opacity: 0; transform: translate(-50%, 6px); } }
 
 /* ---------- panelen ---------- */
 .sheet { position: fixed; inset: 0; z-index: 20; background: rgba(0, 0, 0, .6); display: flex; align-items: flex-end; justify-content: center; }
@@ -335,7 +341,7 @@ select { background: var(--panel-2); color: var(--text); border: 1px solid var(-
 @media (max-width: 1180px) { .shuffler { display: none; } .rail-in { justify-content: flex-end; padding-right: 32px; } }
 @media (max-width: 1060px) { .jackpots { width: 340px; } .jp .num { font-size: 13px; } .tray { width: 360px; padding: 7px 12px; } .stack:nth-child(n + 10) { display: none; } }
 @media (max-width: 899px) {
-  .boxtabs { display: none; }
+  .boxtabs, .step .per { display: none; }
   .step, .toggle { min-height: 46px; }
   .dock .btn { min-height: 48px; padding-block: 8px; }
   .dock-in { gap: 8px; }
@@ -363,4 +369,67 @@ select { background: var(--panel-2); color: var(--text); border: 1px solid var(-
 @media (max-height: 760px) and (max-width: 899px) { .rail { display: none; } }
 @media (max-width: 440px) { .brand .mark, .brand .long { display: none; } }
 @media (max-width: 380px) { .iconbtn { width: 34px; height: 34px; } }
+
+/* ---------- telefoon liggend: tafel links, jackpot en bediening rechts ----------
+   Dezelfde mediaquery staat als LAND_MQ in lib/table.js; houd ze gelijk. */
+@media (orientation: landscape) and (max-height: 500px) and (min-width: 560px) {
+  .app { --side: clamp(250px, 34vw, 320px); display: grid; grid-template-columns: minmax(0, 1fr) var(--side); grid-template-rows: auto auto minmax(0, 1fr); grid-template-areas: "bar bar" "felt jp" "felt dock"; }
+  .app.is-setup { grid-template-areas: "bar bar" "felt felt" "felt felt"; }
+  .bar { grid-area: bar; }
+  .bar-in { grid-template-columns: minmax(0, 1fr) auto auto; grid-template-areas: "brand bank icons"; min-height: 0; padding-block: 5px; gap: 4px 18px; }
+  .brand { gap: 8px; }
+  .brand .mark { display: none; }
+  .brand .long { display: inline; }
+  .brand b { font-size: 15px; }
+  .brand small, .tablebtn { font-size: 11px; }
+  .bank { border-top: 0; padding-top: 0; justify-content: flex-start; }
+  .bank output { font-size: 17px; }
+  .iconbtn { width: 34px; height: 34px; }
+  .iconbtn svg { width: 17px; height: 17px; }
+
+  .tabletop { grid-area: jp; background: var(--bar); border-left: 1px solid rgba(255, 255, 255, .06); padding: 10px var(--gutter-r) 0 12px; }
+  .app.is-setup .tabletop, .rail { display: none; }
+  .jackpots { position: static; width: auto; height: auto; padding: 6px 10px 7px; border: 1px solid #2c2d30; border-radius: 8px; background: #0b0c0d; flex-direction: column; align-items: stretch; gap: 3px; }
+  .jp-head { display: flex; font-size: 8.5px; gap: 5px; }
+  .jp-head i { width: 6px; height: 6px; }
+  .jp-cells { display: flex; flex-direction: column; gap: 1px; flex: none; max-width: none; }
+  .jp { flex-direction: row; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .jp small { font-size: 9px; }
+  .jp .num { font-size: 12.5px; }
+  .jp-dot { display: none; }
+  .feltwrap { grid-area: felt; }
+
+  .dock { grid-area: dock; position: relative; left: auto; right: auto; bottom: auto; z-index: 1; background: var(--bar); border-left: 1px solid rgba(255, 255, 255, .06); padding: 10px 0 max(10px, env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; justify-content: center; overflow-y: auto; overscroll-behavior: contain; }
+  .dock-in { max-width: none; width: 100%; margin: 0; gap: 8px; padding-left: 12px; }
+  .betgrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .step, .toggle { min-height: 44px; }
+  .step { grid-template-columns: 30px minmax(0, 1fr) 30px; }
+  .step button { font-size: 20px; }
+  .step .mid output { font-size: 14px; }
+  .step .mid small, .toggle small { font-size: 9px; letter-spacing: .05em; }
+  .toggle { padding: 6px 10px; }
+  .toggle .sw { width: 34px; height: 20px; }
+  .toggle .sw::after { width: 14px; height: 14px; }
+  .toggle[aria-pressed="true"] .sw::after { transform: translateX(14px); }
+  .dock .btn { min-height: 44px; padding-block: 6px; font-size: 14px; }
+  .dock .row { grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .dock .row.wide2 > :last-child { grid-column: 1 / -1; }
+  .boxtabs, .step .per { display: none; }
+  .who, .coach { font-size: 12px; }
+  .roundres { font-size: 12.5px; }
+  .roundres b { display: block; margin: 0; font-size: 19px; }
+
+  /* meldingen bovenin de bedieningskolom, zodat ze niets op het laken afdekken */
+  .toast { left: auto; right: calc(var(--side) / 2); bottom: auto; top: 54px; transform: translateX(50%); max-width: calc(var(--side) - 24px); font-size: 13px; animation-name: toastin-side; }
+  .app.is-setup .toast { right: 50%; top: auto; bottom: 12px; max-width: min(92vw, 460px); }
+  @keyframes toastin-side { from { opacity: 0; transform: translate(50%, -6px); } }
+
+  /* Op het verkleinde laken iets grotere teksten, zodat ze leesbaar blijven */
+  .stage-in.land .msg { font-size: 22px; }
+  .stage-in.land .tot, .stage-in.land .res { font-size: 17px; padding: 3px 12px; }
+  .stage-in.land .winlab { font-size: 17px; padding: 1px 9px; }
+  .stage-in.land .boxlab { font-size: 15px; }
+}
+/* smalle bedieningskolom: "Pair Pursuit" wordt "Pair" */
+@media (orientation: landscape) and (max-height: 500px) and (min-width: 560px) and (max-width: 822px) { .step .lg { display: none; } }
 @media (prefers-reduced-motion: reduce) { .card.deal, .toast, .jp.hit { animation: none; } }

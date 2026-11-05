@@ -29,6 +29,8 @@ Oefen blackjack met de tafelregels van Holland Casino (Spelreglement juli 2026, 
 3. Ga naar **Deployments**, klik bij de bovenste op **⋯** → **Redeploy**.
 4. Open de site en start een tafel. Onder de jackpotmeters staat nu een groen bolletje met "Live".
 
+De site gaat zuinig om met de database: de stand wordt via de cache van Vercel opgehaald (hooguit ongeveer drie keer per minuut, hoeveel spelers er ook zijn) en jackpotinzetten worden per speler gebundeld verstuurd. Testversies (branches anders dan `main`) gebruiken een aparte test-jackpot, zodat ze de live meters niet laten groeien.
+
 ### 4. Eigen domeinnaam (optioneel)
 In Vercel: **Settings** → **Domains** → vul je domein in en volg de DNS-instructies.
 
@@ -50,9 +52,10 @@ Gaat er iets mis, dan kun je in Vercel onder **Deployments** een eerdere versie 
 | `lib/table.js` | Tafelontwerp: boog, boxen, Pair Pursuit-, Tripps- en jackpotvakken, en waar kaarten en fiches liggen |
 | `lib/game.js` | Het spelverloop en alles wat op het scherm getekend wordt, inclusief teksten van spelregels en panelen |
 | `lib/jackpot-config.js` | Startbedragen van de jackpots en hoeveel van elke inzet naar de meters gaat |
-| `lib/jackpot.js` | Jackpot in de browser: ophalen van de gedeelde stand, lokale terugval |
-| `app/api/jackpot/route.js` | Server: bewaart de gedeelde jackpot in Redis |
-| `app/globals.css` | Kleuren, lettertypes, fiches en opmaak |
+| `lib/jackpot.js` | Jackpot in de browser: ophalen van de gedeelde stand, inzetten bundelen, lokale terugval |
+| `app/api/jackpot/route.js` | Server: bewaart de gedeelde jackpot in Redis, met cache en bescherming tegen nepverzoeken |
+| `app/globals.css` | Kleuren, fiches en opmaak, ook de liggende indeling voor telefoons |
+| `app/layout.jsx` | Paginatitel en de lettertypes (Libre Baskerville en Archivo, meegeleverd met de site) |
 | `components/Game.jsx` | De vaste opbouw van de pagina (balk, laken, knoppen) |
 | `tests/engine.test.js` | Controles op de spelregels |
 

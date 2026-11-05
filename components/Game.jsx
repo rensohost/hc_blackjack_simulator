@@ -12,7 +12,7 @@ export default function Game() {
 
   return (
     <>
-      <div className="app">
+      <div className="app" id="app">
         <header className="bar">
           <div className="bar-in wrap pad">
             <div className="brand">
