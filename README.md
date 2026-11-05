@@ -47,11 +47,12 @@ Gaat er iets mis, dan kun je in Vercel onder **Deployments** een eerdere versie 
 | Bestand | Wat staat erin |
 | --- | --- |
 | `lib/engine.js` | Spelregels: totalen, wanneer de bank koopt, verdubbelen, splitsen, sidebets, uitbetalingen, basisstrategie |
+| `lib/table.js` | Tafelontwerp: boog, boxen, Pair Pursuit-, Tripps- en jackpotvakken, en waar kaarten en fiches liggen |
 | `lib/game.js` | Het spelverloop en alles wat op het scherm getekend wordt, inclusief teksten van spelregels en panelen |
 | `lib/jackpot-config.js` | Startbedragen van de jackpots en hoeveel van elke inzet naar de meters gaat |
 | `lib/jackpot.js` | Jackpot in de browser: ophalen van de gedeelde stand, lokale terugval |
 | `app/api/jackpot/route.js` | Server: bewaart de gedeelde jackpot in Redis |
-| `app/globals.css` | Kleuren, lettertypes en opmaak |
+| `app/globals.css` | Kleuren, lettertypes, fiches en opmaak |
 | `components/Game.jsx` | De vaste opbouw van de pagina (balk, laken, knoppen) |
 | `tests/engine.test.js` | Controles op de spelregels |
 

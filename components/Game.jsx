@@ -3,82 +3,90 @@
 import { useEffect } from 'react';
 import { startGame } from '../lib/game';
 
-/* De tafel zelf: een vaste opbouw waarin lib/game.js de kaarten, inzetten en panelen tekent. */
+/* Fichestapels in de fichebak van de croupier (waarde, hoogte in px) */
+const TRAY = [['500', 40], ['100', 50], ['50', 58], ['20', 58], ['10', 58], ['5', 52], ['2-5', 46], ['2-5', 46], ['5', 52], ['10', 58], ['20', 58], ['50', 58]];
+
+/* De tafel zelf: een vaste opbouw waarin lib/game.js de kaarten, fiches en panelen tekent. */
 export default function Game() {
   useEffect(() => startGame(), []);
 
   return (
     <>
       <div className="app">
-        <header className="bar pad">
-          <div className="brand">
-            <span className="mark" aria-hidden="true">♠</span>
-            <div style={{ minWidth: 0 }}>
-              <b>Blackjack Oefentafel</b>
-              <small id="tableLabel">Regels Holland Casino · speelgeld</small>
-              <button id="tableBtn" className="tablebtn" data-act="sheet" data-v="table" hidden>
-                Tafel
+        <header className="bar">
+          <div className="bar-in wrap pad">
+            <div className="brand">
+              <span className="mark" aria-hidden="true">♠</span>
+              <div style={{ minWidth: 0 }}>
+                <b><span className="long">Blackjack </span>Oefentafel</b>
+                <small id="tableLabel">Regels Holland Casino · speelgeld</small>
+                <button id="tableBtn" className="tablebtn" data-act="sheet" data-v="table" hidden>
+                  Tafel
+                </button>
+              </div>
+            </div>
+            <div className="bank" id="bankbar">
+              <span>
+                <small>Saldo</small> <output id="bankroll" className="num">€ 0</output>
+              </span>
+              <span className="staked" id="staked"></span>
+            </div>
+            <div className="iconbtns">
+              <button className="iconbtn" data-act="sheet" data-v="rules" aria-label="Spelregels en uitbetalingen" title="Spelregels">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z" />
+                  <path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5" />
+                  <path d="M8 7h8M8 11h6" />
+                </svg>
+              </button>
+              <button className="iconbtn" data-act="sheet" data-v="chart" aria-label="Strategiekaart" title="Strategiekaart">
+                <svg viewBox="0 0 24 24">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
+                </svg>
+              </button>
+              <button className="iconbtn" data-act="sheet" data-v="stats" aria-label="Analyse" title="Analyse">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
+                </svg>
+              </button>
+              <button className="iconbtn" data-act="sheet" data-v="settings" aria-label="Instellingen" title="Instellingen">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="3" />
+                  <path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" />
+                </svg>
               </button>
             </div>
           </div>
-          <div className="iconbtns">
-            <button className="iconbtn" data-act="sheet" data-v="rules" aria-label="Spelregels en uitbetalingen" title="Spelregels">
-              <svg viewBox="0 0 24 24">
-                <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z" />
-                <path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5" />
-                <path d="M8 7h8M8 11h6" />
-              </svg>
-            </button>
-            <button className="iconbtn" data-act="sheet" data-v="chart" aria-label="Strategiekaart" title="Strategiekaart">
-              <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
-              </svg>
-            </button>
-            <button className="iconbtn" data-act="sheet" data-v="stats" aria-label="Analyse" title="Analyse">
-              <svg viewBox="0 0 24 24">
-                <path d="M4 20V10M10 20V4M16 20v-7M22 20H2" />
-              </svg>
-            </button>
-            <button className="iconbtn" data-act="sheet" data-v="settings" aria-label="Instellingen" title="Instellingen">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="3" />
-                <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z" />
-              </svg>
-            </button>
-          </div>
         </header>
 
-        <div className="bankbar pad" id="bankbar">
-          <div>
-            <small>Saldo</small>
-            <output id="bankroll" className="num">€ 0</output>
+        <div className="tabletop">
+          <div className="rail">
+            <div className="rail-in wrap">
+              <div className="tray" aria-hidden="true">
+                {TRAY.map(([k, h], i) => (
+                  <span key={i} className={`stack c-${k}`} style={{ height: h }} />
+                ))}
+              </div>
+              <div className="shuffler" aria-hidden="true">
+                <i />
+                <span>SCHUDMACHINE · 6 DECKS</span>
+              </div>
+            </div>
           </div>
-          <span className="staked" id="staked"></span>
+          <section className="jackpots" id="jackpots" aria-label="Queens Pursuit jackpot"></section>
         </div>
 
-        <section className="jackpots pad" id="jackpots" aria-label="Queens Pursuit jackpots"></section>
-
-        <div className="feltwrap pad">
-          <main className="felt" id="felt">
-            <div className="dealer" id="dealer"></div>
-            <svg className="inscr" viewBox="0 0 400 104" aria-label="Black Jack betaalt 3 tot 2. Verzekering betaalt 2 tot 1.">
-              <defs>
-                <path id="arcA" d="M 24 14 Q 200 96 376 14" />
-                <path id="arcB" d="M 78 54 Q 200 110 322 54" />
-              </defs>
-              <text className="big">
-                <textPath href="#arcA" startOffset="50%" textAnchor="middle">BLACK JACK BETAALT 3 TOT 2</textPath>
-              </text>
-              <text className="small">
-                <textPath href="#arcB" startOffset="50%" textAnchor="middle">VERZEKERING BETAALT 2 TOT 1</textPath>
-              </text>
-            </svg>
-            <div className="ruleline">Bank koopt tot en met 16 en past op alle 17</div>
-            <div className="msg" id="msg" role="status" aria-live="polite"></div>
-            <div className="boxes" id="boxes"></div>
-            <div id="setup"></div>
-          </main>
+        <div className="feltwrap" id="feltwrap">
+          <div className="stage" id="stage">
+            <div className="stage-in g-wide" id="stageIn">
+              <div id="print"></div>
+              <div className="msg" id="msg" role="status" aria-live="polite"></div>
+              <div id="dealer"></div>
+              <div id="boxes"></div>
+            </div>
+          </div>
+          <div id="setup"></div>
         </div>
 
         <div id="toast" className="toast" hidden role="status" aria-live="polite"></div>

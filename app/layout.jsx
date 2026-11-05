@@ -10,7 +10,7 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#0b1714',
+  themeColor: '#17181a',
 };
 
 export default function RootLayout({ children }) {
@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
         {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Instrument+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Archivo:wght@400;500;600;700;800&display=swap"
         />
       </head>
       <body>{children}</body>
