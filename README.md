@@ -29,7 +29,7 @@ Oefen blackjack met de tafelregels van Holland Casino (Spelreglement juli 2026, 
 3. Ga naar **Deployments**, klik bij de bovenste op **⋯** → **Redeploy**.
 4. Open de site en start een tafel. Onder de jackpotmeters staat nu een groen bolletje met "Live".
 
-De site gaat zuinig om met de database: de stand wordt via de cache van Vercel opgehaald (hooguit ongeveer drie keer per minuut, hoeveel spelers er ook zijn) en jackpotinzetten worden per speler gebundeld verstuurd. Testversies (branches anders dan `main`) gebruiken een aparte test-jackpot, zodat ze de live meters niet laten groeien.
+De site gaat zuinig om met de database: de stand wordt via de cache van Vercel opgehaald (hooguit ongeveer drie keer per minuut, hoeveel spelers er ook zijn) en jackpotinzetten worden per speler gebundeld verstuurd (hooguit eens per minuut). Testversies (branches anders dan `main`) gebruiken een aparte test-jackpot, zodat ze de live meters niet laten groeien.
 
 ### 4. Eigen domeinnaam (optioneel)
 In Vercel: **Settings** → **Domains** → vul je domein in en volg de DNS-instructies.

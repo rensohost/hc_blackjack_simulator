@@ -8,7 +8,7 @@
 
    - GET:  de stand. Vercel bewaart het antwoord 20 seconden in zijn cache, dus hoeveel spelers er ook kijken,
            de database wordt hooguit ongeveer drie keer per minuut gevraagd.
-   - feed: jackpotinzetten; de browser bundelt ze en stuurt ze hooguit eens per 20 seconden.
+   - feed: jackpotinzetten; de browser bundelt ze en stuurt ze hooguit eens per minuut.
    - hit:  een jackpot valt. De kaarten moeten die jackpot echt vormen, en per bezoeker kan er hooguit
            één jackpot per 12 uur vallen, zodat niemand de meters met nepverzoeken kan leegtrekken.
    Testversies (preview) gebruiken een eigen hash, zodat testrondes de live jackpot niet raken.
