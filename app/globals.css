@@ -185,6 +185,16 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .tcard b { display: block; font-family: var(--display); font-size: 21px; line-height: 1.2; }
 .tcard small { color: var(--muted); font-size: 11.5px; }
 .tcard:has(input:checked) { border-color: var(--brass); background: #2a2414; box-shadow: inset 0 0 0 1px var(--brass); }
+/* spelvorm kiezen: vrij spel of oefenmodus */
+.modes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.mcard { position: relative; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; cursor: pointer; background: var(--panel-2); }
+.mcard input { position: absolute; opacity: 0; pointer-events: none; }
+.mcard b { display: block; font-size: 18px; line-height: 1.25; }
+.mcard small { display: block; margin-top: 3px; color: var(--muted); font-size: 12.5px; line-height: 1.35; }
+.mcard:has(input:checked) { border-color: var(--brass); background: #2a2414; box-shadow: inset 0 0 0 1px var(--brass); }
+.mcard:has(input:focus-visible), .tcard:has(input:focus-visible) { outline: 2px solid var(--brass); outline-offset: 2px; }
+/* onderdelen die alleen bij één spelvorm horen */
+body[data-mode="vrij"] .only-oefen, body[data-mode="oefen"] .only-vrij { display: none !important; }
 .bankrow { display: flex; gap: 8px; align-items: stretch; flex-wrap: wrap; }
 .euroin { display: flex; align-items: center; gap: 6px; background: var(--panel-2); border: 1px solid var(--line); border-radius: 10px; padding: 0 10px; flex: 1 1 140px; min-width: 0; }
 .euroin span { color: var(--muted); font-family: var(--num); }
@@ -388,7 +398,7 @@ select { background: var(--panel-2); color: var(--text); border: 1px solid var(-
   .iconbtn svg { width: 17px; height: 17px; }
 
   .tabletop { grid-area: jp; background: var(--bar); border-left: 1px solid rgba(255, 255, 255, .06); padding: 10px var(--gutter-r) 0 12px; }
-  .app.is-setup .tabletop, .rail { display: none; }
+  .app.is-setup .tabletop, .rail, .tabletop:has(> .jackpots[hidden]) { display: none; }
   .jackpots { position: static; width: auto; height: auto; padding: 6px 10px 7px; border: 1px solid #2c2d30; border-radius: 8px; background: #0b0c0d; flex-direction: column; align-items: stretch; gap: 3px; }
   .jp-head { display: flex; font-size: 8.5px; gap: 5px; }
   .jp-head i { width: 6px; height: 6px; }

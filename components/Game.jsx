@@ -38,7 +38,7 @@ export default function Game() {
                   <path d="M8 7h8M8 11h6" />
                 </svg>
               </button>
-              <button className="iconbtn" data-act="sheet" data-v="chart" aria-label="Strategiekaart" title="Strategiekaart">
+              <button className="iconbtn only-oefen" data-act="sheet" data-v="chart" aria-label="Strategiekaart" title="Strategiekaart">
                 <svg viewBox="0 0 24 24">
                   <rect x="3" y="3" width="18" height="18" rx="2" />
                   <path d="M3 9h18M3 15h18M9 3v18M15 3v18" />
