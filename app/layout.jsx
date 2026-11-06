@@ -1,12 +1,10 @@
-/* Lettertypes komen mee met de site zelf (geen verbinding met Google nodig, dus ook geen IP-adres naar Google). */
-import '@fontsource/libre-baskerville/400.css';
-import '@fontsource/libre-baskerville/400-italic.css';
-import '@fontsource/libre-baskerville/700.css';
-import '@fontsource/archivo/400.css';
-import '@fontsource/archivo/500.css';
-import '@fontsource/archivo/600.css';
-import '@fontsource/archivo/700.css';
-import '@fontsource/archivo/800.css';
+/* Lettertype Open Sans komt mee met de site zelf (geen verbinding met Google nodig, dus ook geen IP-adres naar Google). */
+import '@fontsource/open-sans/400.css';
+import '@fontsource/open-sans/400-italic.css';
+import '@fontsource/open-sans/500.css';
+import '@fontsource/open-sans/600.css';
+import '@fontsource/open-sans/700.css';
+import '@fontsource/open-sans/800.css';
 import './globals.css';
 
 export const metadata = {

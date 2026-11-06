@@ -55,7 +55,7 @@ Gaat er iets mis, dan kun je in Vercel onder **Deployments** een eerdere versie 
 | `lib/jackpot.js` | Jackpot in de browser: ophalen van de gedeelde stand, inzetten bundelen, lokale terugval |
 | `app/api/jackpot/route.js` | Server: bewaart de gedeelde jackpot in Redis, met cache en bescherming tegen nepverzoeken |
 | `app/globals.css` | Kleuren, fiches en opmaak, ook de liggende indeling voor telefoons |
-| `app/layout.jsx` | Paginatitel en de lettertypes (Libre Baskerville en Archivo, meegeleverd met de site) |
+| `app/layout.jsx` | Paginatitel en het lettertype (Open Sans, meegeleverd met de site) |
 | `components/Game.jsx` | De vaste opbouw van de pagina (balk, laken, knoppen) |
 | `tests/engine.test.js` | Controles op de spelregels |
 

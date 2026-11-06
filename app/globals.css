@@ -32,9 +32,9 @@ img { max-width: 100%; }
   --blue: #3f74b8;
   --led: #ffe3a3;
 
-  --display: "Libre Baskerville", Baskerville, Georgia, serif;
-  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  --num: "Libre Baskerville", Baskerville, Georgia, serif;
+  --display: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  --body: "Open Sans", "Helvetica Neue", Arial, sans-serif;
+  --num: "Open Sans", "Helvetica Neue", Arial, sans-serif;
 
   --gutter-l: max(16px, env(safe-area-inset-left, 0px));
   --gutter-r: max(16px, env(safe-area-inset-right, 0px));
@@ -170,7 +170,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .boxbtn:hover:not(.sel)::before { box-shadow: 0 0 0 2px var(--brass-dim); }
 .boxbtn:focus-visible { outline: 0; }
 .boxbtn:focus-visible::before { outline: 2px solid var(--brass); outline-offset: 4px; }
-.boxlab { position: absolute; transform: translate(-50%, 0); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(244, 240, 232, .6); pointer-events: none; white-space: nowrap; }
+.boxlab { position: absolute; transform: translate(-50%, 0); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: rgba(244, 240, 232, .6); pointer-events: none; white-space: nowrap; z-index: 3; }
 .g-narrow .boxlab { font-size: 9px; }
 
 /* ---------- startscherm ---------- */
