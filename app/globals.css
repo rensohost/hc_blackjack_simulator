@@ -185,7 +185,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .tcard b { display: block; font-family: var(--display); font-size: 21px; line-height: 1.2; }
 .tcard small { color: var(--muted); font-size: 11.5px; }
 .tcard:has(input:checked) { border-color: var(--brass); background: #2a2414; box-shadow: inset 0 0 0 1px var(--brass); }
-/* spelvorm kiezen: vrij spel of oefenmodus */
+/* spelvorm kiezen: spelen of oefenmodus */
 .modes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
 .mcard { position: relative; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; cursor: pointer; background: var(--panel-2); }
 .mcard input { position: absolute; opacity: 0; pointer-events: none; }
@@ -377,7 +377,8 @@ select { background: var(--panel-2); color: var(--text); border: 1px solid var(-
   .jp-cells { flex: 1; max-width: 720px; }
 }
 @media (max-height: 760px) and (max-width: 899px) { .rail { display: none; } }
-@media (max-width: 440px) { .brand .mark, .brand .long { display: none; } }
+@media (max-width: 440px) { .brand .mark { display: none; } .brand b { font-size: 16px; } }
+@media (max-width: 359px) { .brand .long { display: none; } }
 @media (max-width: 380px) { .iconbtn { width: 34px; height: 34px; } }
 
 /* ---------- telefoon liggend: tafel links, jackpot en bediening rechts ----------

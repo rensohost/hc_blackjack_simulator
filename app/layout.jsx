@@ -8,9 +8,9 @@ import '@fontsource/open-sans/800.css';
 import './globals.css';
 
 export const metadata = {
-  title: 'Blackjack Oefentafel',
+  title: 'Blackjack Simulator',
   description:
-    'Oefen blackjack met de tafelregels van Holland Casino: tafels van €20, €50 en €100, sidebets, gedeelde jackpot en een strategie-coach. Speelgeld, geen echt geld. Onofficieel, niet verbonden aan Holland Casino.',
+    'Speel of oefen blackjack met de tafelregels van Holland Casino: tafels van €20, €50 en €100, sidebets, een gedeelde jackpot en een oefenmodus met strategiecoach. Speelgeld, geen echt geld. Onofficieel, niet verbonden aan Holland Casino.',
 };
 
 export const viewport = {

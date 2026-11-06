@@ -1,4 +1,4 @@
-# Blackjack Oefentafel
+# Blackjack Simulator
 
 Oefen blackjack met de tafelregels van Holland Casino (Spelreglement juli 2026, art. 3.2). Speelgeld, geen echt geld. Onofficieel en niet verbonden aan Holland Casino.
 

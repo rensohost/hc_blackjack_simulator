@@ -18,7 +18,7 @@ export default function Game() {
             <div className="brand">
               <span className="mark" aria-hidden="true">♠</span>
               <div style={{ minWidth: 0 }}>
-                <b><span className="long">Blackjack </span>Oefentafel</b>
+                <b>Blackjack<span className="long"> Simulator</span></b>
                 <button id="tableBtn" className="tablebtn" data-act="sheet" data-v="table" hidden>
                   Tafel
                 </button>
