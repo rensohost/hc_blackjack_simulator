@@ -76,7 +76,7 @@ button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-v
 .tray { width: 500px; height: 74px; padding: 7px 26px; background: #0d0d0e; border: 1px solid #000; border-radius: 6px; box-shadow: inset 0 6px 12px rgba(0, 0, 0, .7); display: flex; align-items: flex-end; justify-content: center; gap: 8px; overflow: hidden; }
 .stack { width: 30px; flex: none; border-radius: 5px; background: linear-gradient(90deg, transparent 0 18%, var(--spot) 18% 30%, transparent 30% 70%, var(--spot) 70% 82%, transparent 82%), repeating-linear-gradient(180deg, var(--body-c) 0 5px, var(--dark) 5px 6px); }
 .stack.c-2-5 { background: repeating-linear-gradient(180deg, var(--body-c) 0 5px, var(--dark) 5px 6px); }
-.shuffler { position: absolute; right: 34px; top: 14px; width: 170px; height: 66px; padding: 12px 14px; background: linear-gradient(180deg, #2c2d30, #18191b); border: 1px solid #3a3b3e; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; }
+.shuffler { position: absolute; right: 34px; top: 14px; width: 170px; height: 66px; padding: 12px 14px; background: linear-gradient(180deg, #2c2d30, #18191b); border: 1px solid #3a3b3e; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .shuffler i { width: 110px; height: 6px; border-radius: 3px; background: #050505; box-shadow: inset 0 1px 2px rgba(0, 0, 0, .9); }
 .shuffler span { font-size: 8.5px; letter-spacing: .12em; color: #8d9290; white-space: nowrap; }
 

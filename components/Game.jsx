@@ -19,7 +19,6 @@ export default function Game() {
               <span className="mark" aria-hidden="true">♠</span>
               <div style={{ minWidth: 0 }}>
                 <b><span className="long">Blackjack </span>Oefentafel</b>
-                <small id="tableLabel">Regels Holland Casino · speelgeld</small>
                 <button id="tableBtn" className="tablebtn" data-act="sheet" data-v="table" hidden>
                   Tafel
                 </button>
@@ -70,7 +69,6 @@ export default function Game() {
               </div>
               <div className="shuffler" aria-hidden="true">
                 <i />
-                <span>SCHUDMACHINE · 6 DECKS</span>
               </div>
             </div>
           </div>
